@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import ProjectDetails from './pages/ProjectDetails';
 // placeholders for now
 const About = () => <div className="p-4">About Page</div>;
 const Projects = () => <div className="p-4">Projects Page</div>;
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />

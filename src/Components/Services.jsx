@@ -6,6 +6,10 @@ import {
   ClipboardList,
   Headset,
   Database,
+  BadgeCheck,
+  Briefcase,
+  UserCheck,
+  Award,
 } from 'lucide-react';
 
 function Services() {
@@ -49,7 +53,7 @@ function Services() {
   ];
 
   return (
-    <section className="bg-[#111111]  text-white py-20 px-4 md:px-10">
+    <section className="bg-[#111111] text-white py-20 px-4 md:px-10">
       <div className="flex flex-col sm:flex-row items-center justify-between mb-12 gap-4">
         <h2 className="text-3xl md:text-4xl font-bold text-white">My Expertise</h2>
         <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">
@@ -69,6 +73,33 @@ function Services() {
           </div>
         ))}
       </div>
+
+      {/* Horizontal Stats Card */}
+
+      <div className="mt-32 bg-gray-900 p-10 rounded-xl shadow-md flex flex-col md:flex-row justify-between items-center gap-8 min-h-[260px]">
+        <div className="flex flex-col items-center text-center px-6 py-4 md:ml-20">
+            <BadgeCheck size={36} className="text-blue-500 mb-2" />
+            <p className="text-2xl font-bold">1Y</p>
+            <p className="text-gray-300">Experience</p>
+        </div>
+        <div className="flex flex-col items-center text-center px-6 py-4">
+            <Briefcase size={36} className="text-blue-500 mb-2" />
+            <p className="text-2xl font-bold">15+</p>
+            <p className="text-gray-300">Projects</p>
+        </div>
+        <div className="flex flex-col items-center text-center px-6 py-4">
+            <UserCheck size={36} className="text-blue-500 mb-2" />
+            <p className="text-2xl font-bold">5+</p>
+            <p className="text-gray-300">Clients</p>
+        </div>
+        <div className="flex flex-col items-center text-center px-6 py-4 md:mr-20">
+            <Award size={36} className="text-blue-500 mb-2" />
+            <p className="text-2xl font-bold">1</p>
+            <p className="text-gray-300">Awards</p>
+        </div>
+      </div>
+
+
     </section>
   );
 }
