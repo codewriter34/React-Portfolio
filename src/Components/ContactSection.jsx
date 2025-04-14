@@ -38,20 +38,10 @@ function ContactSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="max-w-6xl mx-auto relative bg-[#0f172a] rounded-2xl shadow-xl px-6 py-10 md:px-12 md:py-16 overflow-hidden flex items-center justify-between flex-col md:flex-row gap-8 min-h-[450px]"
+        className="max-w-6xl mx-auto bg-[#0f172a] rounded-2xl shadow-xl px-6 py-10 md:px-12 md:py-16 overflow-hidden flex flex-col-reverse md:flex-row gap-8"
       >
-        {/* Background Image */}
-        <div className="absolute top-0 right-0 w-1/2 h-full hidden md:block z-0">
-          <img
-            src={graduate2}
-            alt="Graduate"
-            className="w-full h-full object-cover object-top"
-            style={{ mixBlendMode: 'lighten' }}
-          />
-        </div>
-
         {/* Text Section */}
-        <div className="relative z-10 flex-1 text-center md:text-left pr-0 md:pr-20">
+        <div className="relative z-10 flex-1 text-center md:text-left">
           <motion.h2
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -68,6 +58,16 @@ function ContactSection() {
           >
             Contact
           </motion.button>
+        </div>
+
+        {/* Image Section */}
+        <div className="relative z-0 w-full md:w-1/2 h-[250px] md:h-auto">
+          <img
+            src={graduate2}
+            alt="Graduate"
+            className="w-full h-full object-cover object-top rounded-xl md:rounded-none md:absolute md:top-0 md:right-0 md:h-full md:w-full"
+            style={{ mixBlendMode: 'lighten' }}
+          />
         </div>
       </motion.div>
 

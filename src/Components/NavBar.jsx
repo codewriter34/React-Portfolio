@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 function Navbar() {
@@ -10,28 +9,28 @@ function Navbar() {
       <div className="container mx-auto px-4 sm:px-8 flex items-center justify-between relative">
         {/* Logo */}
         <div className={`text-2xl font-bold tracking-wide z-50 ${isOpen ? 'hidden' : 'block'} md:block`}>
-            <Link to="/">WAMBAELISHA</Link>
+          <a href="#hero">WAMBAELISHA</a>
         </div>
+
         {/* Desktop Menu */}
         <div className="hidden md:flex justify-center flex-1 items-center space-x-10">
-          <Link to="/" className="hover:text-blue-400">Home</Link>
-          <Link to="/about" className="hover:text-blue-400">About</Link>
-          <Link to="/projects" className="hover:text-blue-400">Projects</Link>
-          <Link to="/blog" className="hover:text-blue-400">Blog</Link>
-          <Link to="/contact" className="hover:text-blue-400">Contact</Link>
+          <a href="#hero" className="hover:text-blue-400">Home</a>
+          <a href="#about" className="hover:text-blue-400">About</a>
+          <a href="#projects" className="hover:text-blue-400">Projects</a>
+          <a href="#contact" className="hover:text-blue-400">Contact</a>
         </div>
 
         {/* Hire Me Button (Desktop) */}
         <div className="hidden md:flex z-50">
-          <Link
-            to="/hire"
+          <a
+            href="#contact"
             className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white transition duration-300"
           >
             Hire Me
-          </Link>
+          </a>
         </div>
 
-        {/* Hamburger / Close Icon */}
+        {/* Hamburger Icon */}
         <div className="md:hidden z-50">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -51,51 +50,32 @@ function Navbar() {
 
         {/* Mobile Fullscreen Menu */}
         {isOpen && (
-          <div
-            className="fixed inset-0 bg-gray-900 flex flex-col items-center justify-center z-40 px-4 py-10 text-center"
-          >
-            {/* Close button already top-right */}
+          <div className="fixed inset-0 bg-gray-900 flex flex-col items-center justify-center z-40 px-4 py-10 text-center">
             <div className="text-3xl font-bold mb-10">WAMBAELISHA</div>
-            
+
             <div className="space-y-6 text-xl">
-              <Link onClick={() => setIsOpen(false)} to="/" className="block hover:text-blue-400">Home</Link>
-              <Link onClick={() => setIsOpen(false)} to="/about" className="block hover:text-blue-400">About</Link>
-              <Link onClick={() => setIsOpen(false)} to="/projects" className="block hover:text-blue-400">Projects</Link>
-              <Link onClick={() => setIsOpen(false)} to="/blog" className="block hover:text-blue-400">Blog</Link>
-              <Link onClick={() => setIsOpen(false)} to="/contact" className="block hover:text-blue-400">Contact</Link>
-              <Link
+              <a onClick={() => setIsOpen(false)} href="#hero" className="block hover:text-blue-400">Home</a>
+              <a onClick={() => setIsOpen(false)} href="#about" className="block hover:text-blue-400">About</a>
+              <a onClick={() => setIsOpen(false)} href="#projects" className="block hover:text-blue-400">Projects</a>
+              <a onClick={() => setIsOpen(false)} href="#contact" className="block hover:text-blue-400">Contact</a>
+              <a
                 onClick={() => setIsOpen(false)}
-                to="/hire"
+                href="#contact"
                 className="mt-6 inline-block bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded transition"
               >
                 Hire Me
-              </Link>
+              </a>
             </div>
 
             {/* Socials */}
             <div className="flex space-x-6 text-white text-2xl mt-12">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-blue-600 p-3 rounded-full hover:bg-[#0A66C2] transition-colors"
-              >
+              <a href="https://cm.linkedin.com/in/wamba-elisha" target="_blank" rel="noreferrer" className="bg-blue-600 p-3 rounded-full hover:bg-[#0A66C2] transition-colors">
                 <FaLinkedin />
               </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-blue-600 p-3 rounded-full hover:bg-gray-700 transition-colors"
-              >
+              <a href="https://github.com/codewriter34" target="_blank" rel="noreferrer" className="bg-blue-600 p-3 rounded-full hover:bg-gray-700 transition-colors">
                 <FaGithub />
               </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-blue-600 p-3 rounded-full hover:bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 transition-all"
-              >
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="bg-blue-600 p-3 rounded-full hover:bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 transition-all">
                 <FaInstagram />
               </a>
             </div>

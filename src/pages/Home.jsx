@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import React from 'react';
 import Navbar from '../Components/NavBar';
 import Hero from '../Components/Hero';
@@ -13,14 +12,13 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {/* Content below navbar */}
-     <Hero />
-     <About />
-     <Services />
-     <Companies />
-     <Projects />
-     <ContactSection />
-     <Footer />
+      <div id="hero"><Hero /></div>
+      <div id="about"><About /></div>
+      <div id="services"><Services /></div>
+      <div id="companies"><Companies /></div>
+      <div id="projects"><Projects /></div>
+      <div id="contact"><ContactSection /></div>
+      <Footer />
     </div>
   );
 };

@@ -2,43 +2,28 @@ import afayi from './afayi.jpg';
 import cbf from './cbf.jpg';
 import smarttech from './smartTech.jpg';
 import afrovision from './afroVision.jpg';
+import smarthealth from './smartHealth.jpg';
 
 const projectData = [
   {
-    id: 'afayi',
-    title: 'Afayi Analytics',
-    description: 'Data-driven web app for businesses.',
-    image: afayi,
-    link: '/projects/afayi',
-    repo: 'https://github.com/yourusername/afayi',
-    live: 'https://afayi.live',
-    about: 'Afayi is a business intelligence dashboard to help startups understand their metrics and improve operations.',
-    overview: 'Afayi Analytics is designed to empower businesses with insights through interactive charts and real-time data. It integrates easily with APIs to track KPIs like revenue, customer engagement, and retention.',
-    features: [
-      'Real-time KPI dashboard',
-      'User and session analytics',
-      'Custom chart and report generation',
-      'Data export to Excel and PDF',
-    ],
-    conclusion: 'Afayi enables businesses to make data-backed decisions quickly with clear visualizations and custom reports.',
-  },
-  {
-    id: 'cbf',
-    title: 'CBF Payroll',
-    description: 'Automated payroll system for HR.',
-    image: cbf,
-    link: '/projects/cbf',
-    repo: 'https://github.com/yourusername/cbf-payroll',
+    id: 'smarthealth',
+    title: 'SmartHealth',
+    description: 'A web app built to streamline patient care.',
+    image: smarthealth,
+    link: '/projects/smarthealth',
+    repo: 'https://github.com/codewriter34/SmartHealth.git',
     live: '',
-    about: 'A powerful payroll engine with customizable tax rules and real-time reports built for HR departments.',
-    overview: 'CBF Payroll automates salary calculations, tax deductions, and employee payments. It simplifies HR workflows and ensures legal compliance for small to medium enterprises.',
+    about: 'Final year defense project in fullfilmentof my degree. It is a web app built to streamline patient care and improve communication between patients and healthcare providers using php and mysql.',
+    overview: 'SmartHealth is a web application designed to enhance patient care and communication between patients and healthcare providers. It features a user-friendly interface for appointment scheduling, medical history tracking, and easy access to healthcare resources.',
     features: [
-      'Automated salary calculations',
-      'Customizable tax and deduction rules',
-      'Monthly payslip generation',
-      'Role-based access control',
+      'Real-time appointment scheduling',
+      'Patient medical history management',
+      'Secure AIchat bot for patients',
+      'Consultation management',
+      'User-friendly interface for patients and providers',
+      'Health metrics tracker',
     ],
-    conclusion: 'CBF Payroll saves HR teams hours of manual work and ensures accurate, on-time employee payments.',
+    conclusion: 'SmartHealth streamlines patient care and improves communication between patients and healthcare providers enhacing patient health and well-being.',
   },
   {
     id: 'smarttech',
@@ -115,3 +100,4 @@ const projectData = [
 ];
 
 export default projectData;
+    

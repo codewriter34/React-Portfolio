@@ -1,12 +1,16 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import projectData from '../assets/projectData';
+import realWorldProjects from '../assets/realWorldProjects';
 import Navbar from '../Components/NavBar';
 import { motion } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'; 
 
 function ProjectDetails() {
   const { id } = useParams();
-  const project = projectData.find(p => p.id === id);
+  const allProjects = [...projectData, ...realWorldProjects];
+  const project = allProjects.find(p => p.id === id);
+
 
   if (!project) return <div className="text-black p-10">Project not found</div>;
 
@@ -30,15 +34,27 @@ function ProjectDetails() {
           className="text-center px-4"
         >
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4">{project.title}</h1>
-          <div className="flex gap-6 justify-center mt-4">
+
+          {/* Buttons */}
+          <div className="flex gap-4 justify-center mt-6">
             {project.repo && (
-              <a href={project.repo} target="_blank" rel="noreferrer" className="text-blue-300 underline text-lg">
-                GitHub Repo
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300"
+              >
+                <FaGithub /> GitHub Repo
               </a>
             )}
-            {project.live && (
-              <a href={project.live} target="_blank" rel="noreferrer" className="text-green-300 underline text-lg">
-                Live Site
+            {project.live && project.live.trim() !== '' && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-300"
+              >
+                <FaExternalLinkAlt /> Live Site
               </a>
             )}
           </div>
