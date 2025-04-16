@@ -2,7 +2,7 @@ import afayi from './afayi.jpg';
 import cbf from './cbf.jpg';
 import smarttech from './smartTech.jpg';
 import afrovision from './afroVision.jpg';
-import smarthealth from './smartHealth.jpg';
+import smarthealth from './smarthealth.jpg';
 
 const projectData = [
   {
