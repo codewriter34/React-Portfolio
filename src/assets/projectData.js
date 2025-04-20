@@ -1,8 +1,10 @@
 import afayi from './afayi.jpg';
-import cbf from './cbf.jpg';
-import smarttech from './smartTech.jpg';
-import afrovision from './afroVision.jpg';
+import track from './track.png';
+import fluentbee from './fluentbee.jpg';
 import smarthealth from './smarthealth.jpg';
+import cancer from './cancer.jpg';
+import lumilearn from './lumilearn.jpg';
+import { Rocket } from 'lucide-react';
 
 const projectData = [
   {
@@ -26,77 +28,95 @@ const projectData = [
     conclusion: 'SmartHealth streamlines patient care and improves communication between patients and healthcare providers enhacing patient health and well-being.',
   },
   {
-    id: 'smarttech',
-    title: 'SmartTech Tracker',
-    description: 'Project management dashboard.',
-    image: smarttech,
-    link: '/projects/smarttech',
-    repo: 'https://github.com/yourusername/smarttech-tracker',
+    id: 'track',
+    title: 'Logistic Tracking Webapp',
+    description: 'A web app for tracking logistics thats a shipping agency website with real time map updates.',
+    image: track,
+    link: '/projects/track',
+    repo: 'https://github.com/codewriter34/logisticWebsite.git',
     live: '',
-    about: 'SmartTech Tracker is a lightweight platform to manage team tasks, time tracking, and progress visualization.',
-    overview: 'This app gives teams a central space to collaborate on projects, assign tasks, and monitor progress. Built with clean UI and easy drag-and-drop features.',
+    about: 'A web app for tracking logistics that provides real-time updates on shipments and deliveries.',
+    overview: 'This web application is designed for a shipping agency, allowing users to track their shipments in real-time. It features a user-friendly interface and integrates with mapping services to provide accurate location updates. built using PHP and tailwind CSS.',
     features: [
-      'Task assignment with deadlines',
-      'Kanban-style board for tracking progress',
-      'Daily/weekly report generation',
-      'Commenting and real-time updates',
+      'Real-time shipment tracking',
+      'User-friendly interface',
+      'Integration with mapping services',
+      'Secure login and user management by admin',
+      'Responsive design for mobile and desktop',
+      'Notifications for shipment updates',
     ],
-    conclusion: 'A great tool for teams needing a simple but effective way to manage their workflows.',
+    conclusion: 'This system was build using php Js and tailwind CSS. It is a web app for tracking logistics that provides real-time updates on shipments and deliveries.',
   },
   {
-    id: 'afrovision',
-    title: 'Afrovision Site',
-    description: 'Elegant company portfolio.',
-    image: afrovision,
-    link: '/projects/afrovision',
-    repo: '',
-    live: 'https://afrovision-site.com',
-    about: 'A modern portfolio site designed for Afrovision using React and Tailwind for smooth animations and layout.',
-    overview: 'Afrovision’s website showcases the company’s services and projects with a modern, elegant look. Fully responsive and SEO optimized.',
-    features: [
-      'Responsive design',
-      'Smooth scroll and animations',
-      'Services and testimonials section',
-      'Fast loading and SEO friendly',
-    ],
-    conclusion: 'A beautiful online presence for Afrovision that builds credibility and attracts potential clients.',
-  },
-  {
-    id: 'devbytes',
-    title: 'DevBytes Portal',
-    description: 'Learning platform for developers.',
-    image: afayi, // using afayi image temporarily
-    link: '/projects/devbytes',
-    repo: 'https://github.com/yourusername/devbytes-portal',
+    id: 'cancerconnect',
+    title: 'CancerConnect',
+    description: 'A mobile app for cancer patients and doctors.',
+    image: cancer,
+    link: '/projects/cancerconnect',
+    repo: 'https://github.com/codewriter34/CancerConnect.git',
     live: '',
-    about: 'DevBytes offers daily code lessons, challenges, and articles for developers of all levels.',
-    overview: 'Built to help developers grow, this platform includes a blog, tutorials, and coding challenges with solutions. Includes user login and bookmarking.',
+    about: 'CancerConnect is a mobile app designed to connect cancer patients with healthcare providers improving patient care.',
+    overview: 'CancerConnect is a mobile application that connects cancer patients with healthcare providers. It features a user-friendly interface for appointment scheduling, medical history tracking, and easy access to healthcare resources. The app also includes a section for patients to have video calls with doctors for better experiences.',
     features: [
-      'User authentication',
-      'Bookmark and save lessons',
-      'Daily coding tips and articles',
-      'Gamified challenges with leaderboard',
+      'Real-time appointment scheduling',
+      'Patient medical history management',
+      'Secure video and audio call feature',
+      'Consultation management',
+      'User-friendly interface for patients and providers',
+      'Health metrics tracker',
+      'AI chatbot for patients',
+      'Educational resources using mediastack API',
     ],
-    conclusion: 'DevBytes makes learning to code fun and consistent, helping devs level up daily.',
+    conclusion: 'Built using ReactNative(jS) CancerConnect is a mobile app designed to connect cancer patients with healthcare providers improving patient care.',
   },
   {
     id: 'fluentbee',
     title: 'Fluent Bee',
     description: 'Language learning app.',
-    image: smarttech, // using smarttech image temporarily
+    image: fluentbee, 
     link: '/projects/fluentbee',
-    repo: 'https://github.com/yourusername/fluentbee',
-    live: 'https://fluentbee.com',
-    about: 'Fluent Bee helps users master new languages with interactive video lessons and quizzes.',
-    overview: 'Fluent Bee is a language platform offering curated lessons, quizzes, and AI-powered feedback. It supports multiple languages and tracks user progress.',
+    repo: 'https://github.com/codewriter34/FluentBee.git',
+    live: '',
+    about: 'Fluent Bee is a language learning app that helps users master new languages with interactive lessons and quizzes, users can also learn about the cilture of a country.',
+    overview: 'Built with React Native and firebase Fluent Bee provides lessons on French German and Spanish users can learn this languages and take quizzes to test their knowledge.',
     features: [
-      'Video-based lessons',
-      'Interactive quizzes with instant grading',
-      'Progress tracker dashboard',
-      'Multi-language support with speech recognition',
+      'User authentication',
+      'Interactive lessons and quizzes',
+      'Multi-language support',
+      'Progress tracking',
+      'User-friendly interface',
+      'Speech recognition for pronunciation practice',
+      'Cultural insights and resources',
+      'AI-powered feedback on quizzes',
+
     ],
-    conclusion: 'A smart language tutor in your pocket, Fluent Bee adapts to your pace and helps you grow steadily.',
+    conclusion: 'Fluent Bee is a language learning app that helps users master new languages with interactive lessons and quizzes. It provides a user-friendly interface and supports multiple languages, making it an ideal tool for language learners.',
   },
+  {
+    id: 'Lumilearn',
+    title: 'Lumi Learn',
+    description: 'Personalized AI learning platform for lecturers and students.',
+    image: lumilearn, 
+    link: '/projects/Lumilearn',
+    repo: 'https://github.com/codewriter34/LumiLearn.git',
+    live: '',
+    about: 'Lumi Learn is a personalized AI learning platform for lecturers and students. it give student the ability to learn at their own pace and provides personalized learning experiences.',
+    overview: 'Built with React Native and firebase Lumi Learn provides personalized learning experiences for students and lecturers. It features a user-friendly interface, making it an ideal tool for students to increase their grade.',
+    features: [
+      'User authentication',
+      'Interactive lessons and quizzes',
+      'Progress tracking',
+      'User-friendly interface',
+      'AI-powered feedback on quizzes',
+      'Role base course recommendation',
+      'Admin dashboard for managing courses and users',
+      'Leaderboard for students and lecturers to see top performing students',
+      'AI chatbot for students to ask questions',
+
+    ],
+    conclusion: 'Used OpenAI API and firebase Lumi Learn is a personalized AI learning platform for lecturers and students. It provides personalized learning experiences for students and lecturers, helping students along their learning journey.',
+  },
+  
 ];
 
 export default projectData;
