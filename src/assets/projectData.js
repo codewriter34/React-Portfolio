@@ -136,7 +136,7 @@ const projectData = [
       'User-friendly interface',
       
     ],
-    conclusion: 'Used OpenAI API and firebase Lumi Learn is a personalized AI learning platform for lecturers and students. It provides personalized learning experiences for students and lecturers, helping students along their learning journey.',
+    conclusion: 'EliCommerce is a complete frontend e commerce site built with HTML CSS and JS. It features a user-friendly interface and is responsive on all devices, making it an ideal tool for e commerce.',
   },
 ];
 
