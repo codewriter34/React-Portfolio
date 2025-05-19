@@ -4,7 +4,7 @@ import fluentbee from './fluentbee.jpg';
 import smarthealth from './smarthealth.jpg';
 import cancer from './cancer.jpg';
 import lumilearn from './lumilearn.jpg';
-import ecom from './ecommerce.png';
+import ecom from './ecom.png'
 import { Rocket } from 'lucide-react';
 
 const projectData = [
@@ -122,7 +122,7 @@ const projectData = [
     title: 'E commerce site',
     description: 'complete frontend e commerce site.',
     image: ecom, 
-    link: 'https://elicommerce.netlify.app/',
+    link: '/projects/EliCommerce',
     repo: 'https://github.com/codewriter34/ecommerce',
     live: 'https://elicommerce.netlify.app/#',
     about: 'EliCommerce is a complete frontend e commerce site built with HTML CSS and JS.',
