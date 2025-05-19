@@ -4,6 +4,7 @@ import fluentbee from './fluentbee.jpg';
 import smarthealth from './smarthealth.jpg';
 import cancer from './cancer.jpg';
 import lumilearn from './lumilearn.jpg';
+import ecom from './ecommerce.png';
 import { Rocket } from 'lucide-react';
 
 const projectData = [
@@ -116,7 +117,27 @@ const projectData = [
     ],
     conclusion: 'Used OpenAI API and firebase Lumi Learn is a personalized AI learning platform for lecturers and students. It provides personalized learning experiences for students and lecturers, helping students along their learning journey.',
   },
-  
+  {
+    id: 'EliCommerce',
+    title: 'E commerce site',
+    description: 'complete frontend e commerce site.',
+    image: ecom, 
+    link: 'https://elicommerce.netlify.app/',
+    repo: 'https://github.com/codewriter34/ecommerce',
+    live: 'https://elicommerce.netlify.app/#',
+    about: 'EliCommerce is a complete frontend e commerce site built with HTML CSS and JS.',
+    overview: 'First complete front end project built with HTML CSS and JS responsive on all devices. It features a user-friendly interface.',
+    features: [
+      'Landing page with product categories',
+      'Product details page',
+      'blog page',
+      'contact us page',
+      'Responsive design for mobile and desktop',
+      'User-friendly interface',
+      
+    ],
+    conclusion: 'Used OpenAI API and firebase Lumi Learn is a personalized AI learning platform for lecturers and students. It provides personalized learning experiences for students and lecturers, helping students along their learning journey.',
+  },
 ];
 
 export default projectData;
