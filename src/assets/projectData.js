@@ -5,6 +5,7 @@ import smarthealth from './smarthealth.jpg';
 import cancer from './cancer.jpg';
 import lumilearn from './lumilearn.jpg';
 import ecom from './ecom.png'
+import summ from './summ.png';
 import { Rocket } from 'lucide-react';
 
 const projectData = [
@@ -137,6 +138,27 @@ const projectData = [
       
     ],
     conclusion: 'EliCommerce is a complete frontend e commerce site built with HTML CSS and JS. It features a user-friendly interface and is responsive on all devices, making it an ideal tool for e commerce.',
+  },
+  {
+    id: 'Text-Summarizer',
+    title: 'Text Summarizer',
+    description: 'A web app that summarizes text using Transformers architecture and Hugging Face API.',
+    image: summ, 
+    link: '/projects/Text-Summarizer',
+    repo: 'https://github.com/codewriter34/Text-Summarization',
+    live: 'https://summarize-now.netlify.app/',
+    about: 'Deep learning project that uses Transformers architecture and Hugging Face API to summarize text and documents.',
+    overview: 'Text Summarizer is a web application that uses deep learning techniques to summarize text and documents. It leverages the Transformers architecture and Hugging Face API to provide accurate and concise summaries.',
+    features: [
+      'User-friendly interface for text input',
+      'Real-time text summarization',
+      'Uses Gtts for text-to-speech conversion',
+      'Applied fastapi for backend',
+
+
+      
+    ],
+    conclusion: 'This projects just to test my understanding on deep learning and its fun also used fastAPI for backend react for front end  ',
   },
 ];
 
