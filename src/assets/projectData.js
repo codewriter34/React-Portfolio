@@ -6,6 +6,7 @@ import cancer from './cancer.jpg';
 import lumilearn from './lumilearn.jpg';
 import ecom from './ecom.png'
 import summ from './summ.png';
+import spendwise1 from './spendwise1.png'
 import { Rocket } from 'lucide-react';
 
 const projectData = [
@@ -154,11 +155,32 @@ const projectData = [
       'Real-time text summarization',
       'Uses Gtts for text-to-speech conversion',
       'Applied fastapi for backend',
-
-
-      
     ],
     conclusion: 'This projects just to test my understanding on deep learning and its fun also used fastAPI for backend react for front end  ',
+  },
+  {
+    id: 'spendwise',
+    title: 'SpendWise',
+    description: 'A comprehensive expense tracker built with React, Node.js, and modern web technologies to track my daily expense.',
+    image: spendwise1, 
+    link: '/projects/spendwise',
+    repo: 'https://github.com/codewriter34/React-Portfolio',
+    live: 'https://spenddwise.netlify.app',
+    about: 'A personal finance management application developed to solve the problem of overspending and lack of financial awareness. Built after realizing I was spending more than I earned without knowing where my money was going.',
+    overview: 'SpendWise is a full-stack expense tracker application that helps users manage their income and expenditures effectively. It provides real-time tracking, detailed analytics, and secure authentication to give users complete control over their finances.',
+    features: [
+      'Clerk authentication for secure user access',
+      'Real-time expense and income tracking',
+      'Interactive dashboard with spending analytics',
+      'Report analysis page for weekly/yearly/custom period reports',
+      'Savings goals and money-saving features',
+      'Integration with Mesomb API for payment processing',
+      'Uptime Robot monitoring for reliability',
+      'Responsive design for all devices',
+      'Netlify deployment for fast performance',
+      'Render for hosting our server'
+    ],
+    conclusion: 'SpendWise successfully addresses the challenge of financial management by providing users with powerful tools to track, analyze, and optimize their spending habits. The application combines modern web technologies with intuitive design to deliver a seamless personal finance experience.',
   },
 ];
 
