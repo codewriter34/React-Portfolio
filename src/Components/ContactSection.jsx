@@ -1,15 +1,108 @@
 import React, { useState } from 'react';
 import graduate2 from '../assets/graduate2.jpg';
 import { motion } from 'framer-motion';
+import { useContactModal } from '../context/ContactModalContext';
+
+// Phone validation function - accepts international formats
+const validatePhoneNumber = (phone) => {
+  // Remove all spaces, dashes, parentheses, and plus signs for validation
+  const cleaned = phone.replace(/[\s\-\(\)\+]/g, '');
+  
+  // International phone number regex:
+  // - Must start with optional + or country code
+  // - Should have 7-15 digits (international standard)
+  // - Can include spaces, dashes, parentheses, plus sign
+  const phoneRegex = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
+  
+  // Check if cleaned number has 7-15 digits
+  const digitCount = cleaned.replace(/\D/g, '').length;
+  
+  return phoneRegex.test(phone) && digitCount >= 7 && digitCount <= 15;
+};
+
+// Email validation function - comprehensive validation
+const validateEmail = (email) => {
+  // RFC 5322 compliant email regex (simplified but robust)
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  
+  // Additional checks
+  if (!email || email.length === 0) return false;
+  if (email.length > 254) return false; // RFC 5321 limit
+  
+  // Check for consecutive dots
+  if (email.includes('..')) return false;
+  
+  // Check local and domain parts
+  const parts = email.split('@');
+  if (parts.length !== 2) return false;
+  
+  const [localPart, domain] = parts;
+  
+  // Local part validation
+  if (localPart.length === 0 || localPart.length > 64) return false;
+  if (localPart.startsWith('.') || localPart.endsWith('.')) return false;
+  
+  // Domain validation
+  if (domain.length === 0 || domain.length > 253) return false;
+  if (domain.startsWith('.') || domain.endsWith('.')) return false;
+  if (!domain.includes('.')) return false; // Must have TLD
+  
+  // Check for valid TLD (at least 2 characters)
+  const domainParts = domain.split('.');
+  const tld = domainParts[domainParts.length - 1];
+  if (tld.length < 2) return false;
+  
+  return emailRegex.test(email);
+};
 
 function ContactSection() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, openModal, closeModal } = useContactModal();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const handlePhoneChange = (e) => {
+    const phone = e.target.value;
+    setPhoneError('');
+    
+    if (phone && !validatePhoneNumber(phone)) {
+      setPhoneError('Please enter a valid phone number (international format accepted)');
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const email = e.target.value;
+    setEmailError('');
+    
+    if (email && !validateEmail(email)) {
+      setEmailError('Please enter a valid email address');
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const phone = e.target.phone.value;
+    const email = e.target.email.value;
+    
+    // Validate email before submitting
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address');
+      e.target.email.focus();
+      return;
+    }
+    
+    // Validate phone before submitting
+    if (!validatePhoneNumber(phone)) {
+      setPhoneError('Please enter a valid phone number (international format accepted)');
+      e.target.phone.focus();
+      return;
+    }
+    
     setIsSubmitting(true);
+    setPhoneError('');
+    setEmailError('');
 
     const formData = new FormData(e.target);
     const response = await fetch('https://formspree.io/f/meoandeq', {
@@ -23,8 +116,9 @@ function ContactSection() {
     if (response.ok) {
       setIsSubmitted(true);
       setTimeout(() => {
-        setIsOpen(false);
+        closeModal();
         setIsSubmitted(false);
+        e.target.reset();
       }, 3000);
     } else {
       alert('There was an error. Please try again.');
@@ -53,7 +147,7 @@ function ContactSection() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             whileHover={{ scale: 1.05 }}
-            onClick={() => setIsOpen(true)}
+            onClick={openModal}
             className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-lg font-semibold transition"
           >
             Contact
@@ -73,54 +167,176 @@ function ContactSection() {
 
       {/* Modal Form */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-lg p-8 w-[90%] max-w-md relative text-black">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white rounded-xl shadow-2xl p-6 md:p-8 w-full max-w-2xl relative text-black my-8">
             <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-4 text-2xl font-bold text-gray-700 hover:text-red-600"
+              onClick={closeModal}
+              className="absolute top-3 right-4 text-2xl font-bold text-gray-700 hover:text-red-600 transition"
+              aria-label="Close modal"
             >
               &times;
             </button>
 
             {isSubmitted ? (
-              <div className="text-center space-y-4">
-                <h3 className="text-2xl font-bold text-green-600">🎉 Thank you!</h3>
-                <p>Your message was sent successfully. I’ll get back to you soon!</p>
+              <div className="text-center space-y-4 py-8">
+                <div className="text-6xl mb-4">✓</div>
+                <h3 className="text-2xl font-bold text-green-600">Thank You!</h3>
+                <p className="text-gray-600">Your inquiry has been received. I'll get back to you within 24-48 hours.</p>
               </div>
             ) : (
               <>
-                <h3 className="text-2xl font-bold mb-4 text-center">Contact Me</h3>
+                <div className="mb-6">
+                  <h3 className="text-3xl font-bold mb-2 text-center">Business Inquiry</h3>
+                  <p className="text-gray-600 text-sm text-center">Fill out the form below and I'll get back to you soon</p>
+                </div>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-600"
-                  />
-                  <textarea
-                    name="reason"
-                    placeholder="Reason for Submission"
-                    rows="4"
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-600 resize-none"
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-600"
-                  />
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1">
+                      Full Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="John Doe"
+                      required
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
+                      Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="john@company.com"
+                      required
+                      onChange={handleEmailChange}
+                      className={`w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition ${
+                        emailError ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                    />
+                    {emailError && (
+                      <p className="text-red-500 text-sm mt-1">{emailError}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-1">
+                      Company/Organization
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      placeholder="Company Name (Optional)"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-1">
+                      Phone Number <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="+237 6XX XXX XXX or +1 (555) 123-4567"
+                      required
+                      onChange={handlePhoneChange}
+                      className={`w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition ${
+                        phoneError ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                    />
+                    {phoneError && (
+                      <p className="text-red-500 text-sm mt-1">{phoneError}</p>
+                    )}
+                    <p className="text-gray-500 text-xs mt-1">International format accepted (e.g., +237 681 423 158, +1 555 123 4567)</p>
+                  </div>
+
+                  <div>
+                    <label htmlFor="inquiryType" className="block text-sm font-semibold text-gray-700 mb-1">
+                      Inquiry Type <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      required
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition bg-white"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="web-development">Web Development</option>
+                      <option value="mobile-app">Mobile App Development</option>
+                      <option value="full-stack">Full Stack Project</option>
+                      <option value="consultation">Consultation</option>
+                      <option value="collaboration">Collaboration</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-1">
+                      Subject <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      placeholder="Brief description of your project"
+                      required
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1">
+                      Project Details <span className="text-red-500">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      placeholder="Tell me about your project, timeline, budget, and any specific requirements..."
+                      rows="5"
+                      required
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent resize-none transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="budget" className="block text-sm font-semibold text-gray-700 mb-1">
+                      Budget Range (Optional)
+                    </label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition bg-white"
+                    >
+                      <option value="">Prefer not to say</option>
+                      <option value="under-5k">Under $5,000</option>
+                      <option value="5k-10k">$5,000 - $10,000</option>
+                      <option value="10k-25k">$10,000 - $25,000</option>
+                      <option value="25k-50k">$25,000 - $50,000</option>
+                      <option value="50k-plus">$50,000+</option>
+                    </select>
+                  </div>
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition flex items-center justify-center"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                   >
                     {isSubmitting ? (
-                      <span className="animate-spin mr-2 h-5 w-5 border-t-2 border-white rounded-full"></span>
-                    ) : null}
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                      <>
+                        <span className="animate-spin mr-2 h-5 w-5 border-t-2 border-b-2 border-white rounded-full"></span>
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Inquiry'
+                    )}
                   </button>
                 </form>
               </>

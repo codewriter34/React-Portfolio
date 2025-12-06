@@ -17,7 +17,7 @@ function About() {
         {/* Right: Text */}
         <div className="w-full md:w-1/2 md:pl-10">
           {/* About Title */}
-          <h2 className="text-3xl font-extrabold text-blue-600 text-center md:text-left mb-4">About WAMBA ELICIA</h2>
+          <h2 className="text-3xl font-extrabold text-blue-600 text-center md:text-left mb-4">About WAMBA ELISHA</h2>
           
           {/* Who I Am Text */}
           <p className="text-4xl font-bold text-center md:text-left mb-6">Who I am</p>

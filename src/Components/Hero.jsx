@@ -22,7 +22,7 @@ function Hero() {
       <div className="relative z-10 flex flex-col justify-center items-start h-full px-6 md:px-16">
         <h1 className="text-2xl md:text-4xl font-semibold mb-2">Hello, my name is</h1>
         <h2 className="text-5xl md:text-7xl font-extrabold leading-tight">
-          FORWAMBA<br />ELICIA
+          FORWAMBA<br />ELISHA
         </h2>
         
         <p className="text-lg md:text-2xl mt-6 font-medium">
@@ -31,7 +31,7 @@ function Hero() {
 
         <div className="flex space-x-6 text-white text-2xl mt-8">
           <a
-            href="https://linkedin.com"
+            href="https://cm.linkedin.com/in/wamba-elisha"
             target="_blank"
             rel="noreferrer"
             className="bg-blue-600 p-3 rounded-full hover:bg-[#0A66C2] transition-colors"
@@ -39,7 +39,7 @@ function Hero() {
             <FaLinkedin />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/codewriter34"
             target="_blank"
             rel="noreferrer"
             className="bg-blue-600 p-3 rounded-full hover:bg-gray-700 transition-colors"
@@ -47,7 +47,7 @@ function Hero() {
             <FaGithub />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com"
             target="_blank"
             rel="noreferrer"
             className="bg-blue-600 p-3 rounded-full hover:bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 transition-all"

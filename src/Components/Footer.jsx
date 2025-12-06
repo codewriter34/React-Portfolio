@@ -9,9 +9,9 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* First Grid */}
           <div className="ml-4">
-            <h3 className="text-3xl font-bold mb-4">FORWAMBA ELICIA</h3>
+            <h3 className="text-3xl font-bold mb-4">FORWAMBA ELISHA</h3>
             <p className="text-lg text-gray-300 mb-6">
-              Hi, I'm Forwamba Elicia. I'm passionate about software engineering and
+              Hi, I'm Forwamba Elisha. I'm passionate about software engineering and
               web development. I enjoy building applications that solve real-world problems.
             </p>
             <div>
@@ -67,7 +67,7 @@ function Footer() {
 
         {/* Copyright */}
         <div className="text-center mt-12 text-gray-400">
-          <p>@copyright 2025 FORWAMBA ELICIA</p>
+          <p>@copyright 2025 FORWAMBA ELISHA</p>
         </div>
       </div>
     </footer>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { useContactModal } from '../context/ContactModalContext';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { openModal } = useContactModal();
 
   return (
     <nav className="bg-gray-900 text-white py-6 shadow-md fixed w-full top-0 left-0 z-50">
@@ -17,17 +19,17 @@ function Navbar() {
           <a href="#hero" className="hover:text-blue-400">Home</a>
           <a href="#about" className="hover:text-blue-400">About</a>
           <a href="#projects" className="hover:text-blue-400">Projects</a>
-          <a href="#contact" className="hover:text-blue-400">Contact</a>
+          <button onClick={openModal} className="hover:text-blue-400 bg-transparent border-none cursor-pointer">Contact</button>
         </div>
 
         {/* Hire Me Button (Desktop) */}
         <div className="hidden md:flex z-50">
-          <a
-            href="#contact"
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white transition duration-300"
+          <button
+            onClick={openModal}
+            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white transition duration-300 cursor-pointer"
           >
             Hire Me
-          </a>
+          </button>
         </div>
 
         {/* Hamburger Icon */}
@@ -57,14 +59,24 @@ function Navbar() {
               <a onClick={() => setIsOpen(false)} href="#hero" className="block hover:text-blue-400">Home</a>
               <a onClick={() => setIsOpen(false)} href="#about" className="block hover:text-blue-400">About</a>
               <a onClick={() => setIsOpen(false)} href="#projects" className="block hover:text-blue-400">Projects</a>
-              <a onClick={() => setIsOpen(false)} href="#contact" className="block hover:text-blue-400">Contact</a>
-              <a
-                onClick={() => setIsOpen(false)}
-                href="#contact"
-                className="mt-6 inline-block bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded transition"
+              <button 
+                onClick={() => {
+                  setIsOpen(false);
+                  openModal();
+                }} 
+                className="block hover:text-blue-400 bg-transparent border-none cursor-pointer w-full text-left"
+              >
+                Contact
+              </button>
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  openModal();
+                }}
+                className="mt-6 inline-block bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded transition cursor-pointer"
               >
                 Hire Me
-              </a>
+              </button>
             </div>
 
             {/* Socials */}
@@ -75,7 +87,7 @@ function Navbar() {
               <a href="https://github.com/codewriter34" target="_blank" rel="noreferrer" className="bg-blue-600 p-3 rounded-full hover:bg-gray-700 transition-colors">
                 <FaGithub />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="bg-blue-600 p-3 rounded-full hover:bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 transition-all">
+              <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="bg-blue-600 p-3 rounded-full hover:bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 transition-all">
                 <FaInstagram />
               </a>
             </div>
