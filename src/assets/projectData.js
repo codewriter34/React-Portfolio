@@ -6,8 +6,10 @@ import cancer from './cancer.jpg';
 import lumilearn from './lumilearn.jpg';
 import ecom from './ecom.png'
 import summ from './summ.png';
-import spendwise1 from './spendwise1.png'
-import { Rocket } from 'lucide-react';
+import spendwise1 from './spendwise1.png';
+import paymo1 from './paymo1.png';
+import paymo2 from './paymo2.png';
+import paymo3 from './paymo3.png';
 
 const projectData = [
   {
@@ -181,6 +183,34 @@ const projectData = [
       'Render for hosting our server'
     ],
     conclusion: 'SpendWise successfully addresses the challenge of financial management by providing users with powerful tools to track, analyze, and optimize their spending habits. The application combines modern web technologies with intuitive design to deliver a seamless personal finance experience.',
+  },
+  {
+    id: 'paymo',
+    title: 'Paymo',
+    description:
+      'Payment link platform: businesses create links, clients pay, receipts by email, PDF download, withdrawals, and expiring links.',
+    image: paymo1,
+    gallery: [paymo2, paymo3],
+    link: '/projects/paymo',
+    repo: 'https://github.com/codewriter34/payment-link-platform.git',
+    live: '',
+    about:
+      'Paymo is a full-stack payment system where businesses generate shareable payment links, clients complete payments securely, and owners track balances, request withdrawals, and stay informed through email. Built with a NestJS API, Next.js web app, PostgreSQL, Redis, and Docker.',
+    overview:
+      'The platform uses Prisma with PostgreSQL for reliable data modeling, Redis for caching and fast operations where needed, and Docker for consistent environments. Nodemailer delivers transactional emails (e.g. payment confirmations). Payment links can auto-expire for safer, time-bound checkout. After a successful payment, clients receive email notifications and can download a PDF receipt; business owners see incoming payments and manage payouts from their dashboard.',
+    features: [
+      'NestJS backend and Next.js frontend',
+      'PostgreSQL with Prisma ORM',
+      'Redis and Dockerized services',
+      'Generated payment links for client checkout',
+      'Business dashboard: payments overview and withdrawals',
+      'PDF receipt download after successful payment',
+      'Email notifications via Nodemailer',
+      'Auto-expiring payment links',
+      'Secure flow: clients pay, owners see and reconcile payments',
+    ],
+    conclusion:
+      'Paymo demonstrates an end-to-end fintech-style workflow—link generation, payments, notifications, receipts, and owner tooling—using a modern TypeScript stack and production-minded infrastructure.',
   },
 ];
 

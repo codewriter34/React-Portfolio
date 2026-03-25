@@ -110,6 +110,27 @@ function ProjectDetails() {
           </motion.div>
         )}
 
+        {project.gallery && project.gallery.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-2xl font-bold mb-4">Screenshots</h2>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {project.gallery.map((src, index) => (
+                <img
+                  key={index}
+                  src={src}
+                  alt={`${project.title} screenshot ${index + 1}`}
+                  className="w-full rounded-lg border border-gray-200 shadow-sm object-cover"
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Conclusion */}
         {project.conclusion && (
           <motion.div
