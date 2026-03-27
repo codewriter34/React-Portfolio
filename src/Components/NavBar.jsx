@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { useContactModal } from '../context/ContactModalContext';
+
+const homeHash = (hash) => ({ pathname: '/', hash });
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,14 +14,22 @@ function Navbar() {
       <div className="container mx-auto px-4 sm:px-8 flex items-center justify-between relative">
         {/* Logo */}
         <div className={`text-2xl font-bold tracking-wide z-50 ${isOpen ? 'hidden' : 'block'} md:block`}>
-          <a href="#hero">WAMBAELISHA</a>
+          <Link to={homeHash('#hero')} className="hover:text-blue-400">
+            WAMBAELISHA
+          </Link>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex justify-center flex-1 items-center space-x-10">
-          <a href="#hero" className="hover:text-blue-400">Home</a>
-          <a href="#about" className="hover:text-blue-400">About</a>
-          <a href="#projects" className="hover:text-blue-400">Projects</a>
+          <Link to={homeHash('#hero')} className="hover:text-blue-400">
+            Home
+          </Link>
+          <Link to={homeHash('#about')} className="hover:text-blue-400">
+            About
+          </Link>
+          <Link to={homeHash('#projects')} className="hover:text-blue-400">
+            Projects
+          </Link>
           <button onClick={openModal} className="hover:text-blue-400 bg-transparent border-none cursor-pointer">Contact</button>
         </div>
 
@@ -56,9 +67,15 @@ function Navbar() {
             <div className="text-3xl font-bold mb-10">WAMBAELISHA</div>
 
             <div className="space-y-6 text-xl">
-              <a onClick={() => setIsOpen(false)} href="#hero" className="block hover:text-blue-400">Home</a>
-              <a onClick={() => setIsOpen(false)} href="#about" className="block hover:text-blue-400">About</a>
-              <a onClick={() => setIsOpen(false)} href="#projects" className="block hover:text-blue-400">Projects</a>
+              <Link onClick={() => setIsOpen(false)} to={homeHash('#hero')} className="block hover:text-blue-400">
+                Home
+              </Link>
+              <Link onClick={() => setIsOpen(false)} to={homeHash('#about')} className="block hover:text-blue-400">
+                About
+              </Link>
+              <Link onClick={() => setIsOpen(false)} to={homeHash('#projects')} className="block hover:text-blue-400">
+                Projects
+              </Link>
               <button 
                 onClick={() => {
                   setIsOpen(false);

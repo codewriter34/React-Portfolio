@@ -66,7 +66,12 @@ function ProjectDetails() {
 
         {/* Back to Projects */}
         <div>
-          <Link to="/#projects" className="text-blue-500 underline">&larr; Back to Projects</Link>
+          <Link
+            to={{ pathname: '/', hash: '#projects' }}
+            className="text-blue-500 underline"
+          >
+            &larr; Back to Projects
+          </Link>
         </div>
 
         {/* About */}
